@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { BcryptService } from './bcrypt/bcrypt.service';
+import { BcryptModule } from './bcrypt/bcrypt.module';
 
 @Module({
-  imports: [],
+  imports: [UserModule, PrismaModule, BcryptModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, BcryptService],
 })
 export class AppModule {}
